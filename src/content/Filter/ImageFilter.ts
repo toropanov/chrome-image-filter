@@ -50,11 +50,6 @@ export class ImageFilter extends Filter implements IImageFilter {
     this.requestToAnalyzeImage(request)
       .then(({ result, url }) => {
         if (result) {
-          if (this.settings.filterEffect === 'blur') {
-            image.style.filter = 'blur(25px)'
-            this.showImage(image, url)
-          }
-
           this.blockedItems++
           image.dataset.nsfwFilterStatus = 'nsfw'
         } else {
