@@ -27,6 +27,8 @@ export class ImageFilter extends Filter implements IImageFilter {
   }
 
   public analyzeImage (image: HTMLImageElement, srcAttribute: boolean = false): void {
+    image.setAttribute('alt', '')
+    image.setAttribute('title', '')
     if (
       (srcAttribute || image.dataset.nsfwFilterStatus === undefined) &&
       image.src.length > 0 &&
@@ -66,7 +68,7 @@ export class ImageFilter extends Filter implements IImageFilter {
   private hideImage (image: HTMLImageElement): void {
     if (image.parentNode?.nodeName === 'BODY') image.hidden = true
 
-    image.style.visibility = 'hidden'
+    image.style.display = 'none'
   }
 
   private showImage (image: HTMLImageElement, url: string): void {
@@ -74,7 +76,7 @@ export class ImageFilter extends Filter implements IImageFilter {
       if (image.parentNode?.nodeName === 'BODY') image.hidden = false
 
       image.dataset.nsfwFilterStatus = 'sfw'
-      image.style.visibility = 'visible'
+      image.style.display = 'inherit'
     }
   }
 }
