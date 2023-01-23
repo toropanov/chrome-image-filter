@@ -18,7 +18,7 @@ const initialState: SettingsState = {
   logging: process.env.NODE_ENV === 'development',
   filterEffect: 'blur',
   trainedModel: 'MobileNet_v1.2',
-  filterStrictness: 55
+  filterStrictness: 75
 }
 
 export function settings (state = initialState, action: SettingsActionTypes): SettingsState {
